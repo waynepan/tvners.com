@@ -1,0 +1,14 @@
+CREATE table Cars (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name varchar(500),
+  modified_at DATETIME,
+  created_at DATETIME
+);
+
+CREATE table Images (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  car_id BIGINT UNSIGNED NOT NULL,
+  location varchar(60) NOT NULL,
+  modified_at DATETIME,
+  created_at DATETIME
+);
