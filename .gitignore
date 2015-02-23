@@ -1,3 +1,4 @@
 web/.idea
 web/web.iml
 web/conf/app.conf
+*.swp
