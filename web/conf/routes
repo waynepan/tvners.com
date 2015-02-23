@@ -12,11 +12,15 @@ GET     /favicon.ico                            404
 # Map static resources from the /app/public folder to the /public path
 GET     /public/*filepath                       Static.Serve("public")
 
-GET     /cars/:id   CarsController.Get
-POST    /cars       CarsController.Add
-#PUT     /cars/:id   CarsController.Update
-#DELETE  /cars/:id   CarsController.Delete
-#GET     /cars       CarsController.List
+GET      /api/cars/:id   CarsController.Get
+POST     /api/cars       CarsController.Add
+PUT      /api/cars/:id   CarsController.Update
+DELETE   /api/cars/:id   CarsController.Delete
+GET      /api/cars       CarsController.List
+
+GET      /api/cars/:car_id/images/:id         ImagesController.Get
+GET      /api/cars/:car_id/images             ImagesController.List
+POST     /api/cars/:car_id/images             ImagesController.Add
 
 # Catch all
 *       /:controller/:action                    :controller.:action

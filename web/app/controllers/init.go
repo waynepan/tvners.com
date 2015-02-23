@@ -30,15 +30,24 @@ var InitDb func() = func(){
     // Defines the table for use by GORP
     // This is a function we will create soon.
     defineCarsTable(Dbm)
+    defineImagesTable(Dbm)
     if err := Dbm.CreateTablesIfNotExists(); err != nil {
         revel.ERROR.Fatal(err)
     }
 }
 
-func defineCarsTable(dbm *gorp.DbMap){
-    // set "id" as primary key and autoincrement
+func defineCarsTable(dbm *gorp.DbMap) {
     t := dbm.AddTable(models.Car{}).SetKeys(true, "id") 
     t.ColMap("name").SetMaxSize(500)
+}
+
+
+func defineImagesTable(dbm *gorp.DbMap) {
+    t := dbm.AddTable(models.Image{}).SetKeys(true, "id") 
+    t.ColMap("car_id").SetNotNull(true)
+    t.ColMap("location").SetMaxSize(1000).SetNotNull(true)
+    t.ColMap("name").SetMaxSize(500)
+    t.ColMap("description").SetMaxSize(1000)
 }
 
 func getParamString(param string, defaultValue string) string {
